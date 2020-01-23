@@ -14,7 +14,6 @@ public class usuario {
                         + "2. Listar Persona \n"
                         + "3. Salir \n",
                         this));
-
         do {
             switch (opcion) {
                 case 1:
@@ -27,7 +26,7 @@ public class usuario {
                     System.out.println(metodos.listaPersonas());
                     break;
                 case 3:
-                    opcion = 3;
+
                     break;
                 default:
                     break;
