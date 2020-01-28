@@ -12,7 +12,7 @@ package modelo;
 public class articulo {
     String nombre="";
     String descripcion="";
-    int precio;
+    float precio;
 
     public String getNombre() {
         return nombre;
@@ -30,11 +30,11 @@ public class articulo {
         this.descripcion = descripcion;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
     
