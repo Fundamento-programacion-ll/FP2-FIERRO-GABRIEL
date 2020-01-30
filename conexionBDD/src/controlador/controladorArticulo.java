@@ -9,6 +9,7 @@ import conexion.conector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,8 +20,8 @@ import modelo.articulo;
  * @author SISTEMAS CORP
  */
 public class controladorArticulo {
-    ResultSet rs = null;
-    PreparedStatement ps = null;
+    ResultSet rs;
+    PreparedStatement ps;
     conector conexion = new conector();
     
     
@@ -41,30 +42,7 @@ public class controladorArticulo {
             //Logger.getLogger(controladorArticulo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-//    public void actualizarArticulos(String Actualizar) throws SQLException{
-//        String sqlUpdate="update articulos set nombre= ? where idarticulo= ?";
-//        ps = conexion.getConxion().prepareStatement(sqlUpdate);
-//        
-//        if (Actualizar.equalsIgnoreCase("")) {
-//            // SELECT * FROM Customers
-//            //WHERE CustomerName LIKE '%mar';
-//            String sqlSelectID = 
-//           "update articulos set nombre= ? where";
-//            System.out.println(sqlSelectID);
-//                ps = conexion
-//                        .getConxion()
-//                        .prepareStatement(sqlSelectID);
-//                //ps.setString(1, valorABuscar);
-//                rs  = ps.executeQuery();
-//                while (rs.next()) {                    
-//                    System.out.println("nombre: "+rs.getString(2));
-//                    System.out.println("descripcion: "+rs.getString(3));
-//                    System.out.println("precio: "+rs.getFloat(4));
-//                }
-//        }
-//        
-//    }
+
     
     public void BuscarDatosPorIdNombre
         (String tipoBusqueda, String valorABuscar) throws SQLException{ //
@@ -114,6 +92,44 @@ public class controladorArticulo {
                     System.out.println("descripcion: "+rs.getString(3));
                     System.out.println("precio: "+rs.getFloat(4));
                 }
+        }
+    }
+        
+        public void llenarDatos(String nombreBusqueda, String valorCombo) throws SQLException{
+            String llenarDatos ="Select * from articulos where nombre= "+valorCombo;
+            ps = conexion
+                        .getConxion()
+                        .prepareStatement(llenarDatos);
+                rs  = ps.executeQuery();
+                while (rs.next()) {                    
+                    System.out.println(rs.getString(2));
+                    System.out.println(rs.getString(3));
+                    System.out.println(rs.getFloat(4));
+                    
+                }
+                System.out.println(llenarDatos);
+        }
+       
+    public ArrayList obtenerDatos() throws SQLException{
+        ArrayList<String> listaNombres=new ArrayList<>();
+        String selectDatos="select nombre from articulos";
+        ps=conexion.getConxion().prepareStatement(selectDatos);
+        rs=ps.executeQuery();
+        while(rs.next()){
+            System.out.println(rs.getString(1));
+            listaNombres.add(rs.getString(1));
+        }
+        return listaNombres;
+        
+    }
+    public void actualizar() throws SQLException{
+        String queryUpdate="update articulos set nombre= ?, descripcion= ?, precio= ? where idarticulo= ?";
+        ps=conexion.getConxion().prepareStatement(queryUpdate);
+        rs=ps.executeUpdate();
+        while(rs.next()){
+            rs.getString(2);
+            rs.getString(3);
+            rs.getFloat(4);
         }
     }
 }

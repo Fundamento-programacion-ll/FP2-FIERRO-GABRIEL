@@ -1,17 +1,33 @@
 
 package vista;
 
+import conexion.conector;
 import controlador.controladorArticulo;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.articulo;
 
 public class producto extends javax.swing.JFrame {
 
-    articulo nuevoArticulo = 
-                new articulo();
-    controladorArticulo articuloControlador = 
-                new controladorArticulo();        
-    public producto() {
-        initComponents();                
+    articulo nuevoArticulo = new articulo();
+    controladorArticulo articuloControlador = new controladorArticulo();  
+    ResultSet rs = null;
+    PreparedStatement ps = null;
+    conector conexion = new conector();
+    public producto() throws SQLException {
+        initComponents();  
+        
+//        cmb_actualizar.addItem("asdasd");
+//        cmb_actualizar.addItem("asds");
+        ArrayList<String> listaNombres=articuloControlador.obtenerDatos();
+        for (String nombre : listaNombres) {
+//            System.out.println(nombre);
+            cmb_actualizar.addItem(nombre);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -103,7 +119,23 @@ public class producto extends javax.swing.JFrame {
             }
         });
 
+        cmb_actualizar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_actualizarItemStateChanged(evt);
+            }
+        });
+        cmb_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_actualizarActionPerformed(evt);
+            }
+        });
+
         btn_actualizar.setText("Actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,8 +153,8 @@ public class producto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(cmb_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,6 +194,64 @@ public class producto extends javax.swing.JFrame {
         txtAreaDescripcion.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void cmb_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_actualizarActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_cmb_actualizarActionPerformed
+
+    private void cmb_actualizarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_actualizarItemStateChanged
+//        System.out.println(evt.getStateChange());
+    String nombreBusqueda;
+    String valorCombo;
+        if (evt.getStateChange() == 1){
+//            System.out.println(evt.getItem().toString());
+            valorCombo=evt.getItem().toString();
+            String llenarDatos ="Select * from articulos where nombre= "+"'"+valorCombo+"'";
+        try {
+            ps = conexion
+                    .getConxion()
+                    .prepareStatement(llenarDatos);
+        } catch (SQLException ex) {
+            Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            rs  = ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while (rs.next()) {
+//                System.out.println(rs.getString(2));
+//                System.out.println(rs.getString(3));
+//                System.out.println(rs.getFloat(4));
+//                System.out.println(llenarDatos);
+
+                txtFieldNombre.setText(rs.getString(2));
+                txtAreaDescripcion.setText(rs.getString(3));
+                txtFieldPrecio.setText(rs.getString(4));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_cmb_actualizarItemStateChanged
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        nuevoArticulo.setNombre(txtFieldNombre.getText());
+        nuevoArticulo.setDescripcion(txtAreaDescripcion.getText());
+        float precio = 0;
+        precio = Float.parseFloat(txtFieldPrecio.getText());
+        nuevoArticulo.setPrecio(precio);
+        try {
+            articuloControlador.actualizar();
+        } catch (SQLException ex) {
+            Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -192,7 +282,11 @@ public class producto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new producto().setVisible(true);
+                try {
+                    new producto().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
