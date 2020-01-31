@@ -125,11 +125,21 @@ public class controladorArticulo {
     public void actualizar() throws SQLException{
         String queryUpdate="update articulos set nombre= ?, descripcion= ?, precio= ? where idarticulo= ?";
         ps=conexion.getConxion().prepareStatement(queryUpdate);
-        rs=ps.executeUpdate();
+//        rs=ps.executeUpdate();
         while(rs.next()){
             rs.getString(2);
             rs.getString(3);
             rs.getFloat(4);
+        }
+    }
+    public void eliminarRegistro() throws SQLException {
+        String delete="delete from articulos where nombre = ?";
+        ps=conexion.getConxion().prepareStatement(delete);
+        try {
+            ps.setString(1, "nintendo");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(controladorArticulo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

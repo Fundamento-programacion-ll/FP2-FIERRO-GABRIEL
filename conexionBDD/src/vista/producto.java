@@ -47,6 +47,7 @@ public class producto extends javax.swing.JFrame {
         btnLimpiar = new javax.swing.JButton();
         cmb_actualizar = new javax.swing.JComboBox<>();
         btn_actualizar = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +138,13 @@ public class producto extends javax.swing.JFrame {
             }
         });
 
+        eliminar.setText("jButton1");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,7 +157,9 @@ public class producto extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(btnLimpiar)
                         .addGap(30, 30, 30)
-                        .addComponent(btn_actualizar))
+                        .addComponent(btn_actualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(eliminar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,7 +180,8 @@ public class producto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnLimpiar)
-                    .addComponent(btn_actualizar))
+                    .addComponent(btn_actualizar)
+                    .addComponent(eliminar))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -251,6 +262,14 @@ public class producto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        try {
+            articuloControlador.eliminarRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -296,6 +315,7 @@ public class producto extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JComboBox<String> cmb_actualizar;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
