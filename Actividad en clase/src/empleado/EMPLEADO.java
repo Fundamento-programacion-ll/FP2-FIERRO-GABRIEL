@@ -39,6 +39,5 @@ public abstract class EMPLEADO {
     public EMPLEADO() {
     }
     
-    
     public abstract Double calcularIngresos();
 }
