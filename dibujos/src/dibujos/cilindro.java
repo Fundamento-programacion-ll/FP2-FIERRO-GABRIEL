@@ -10,7 +10,7 @@ package dibujos;
  * @author SISTEMAS
  */
 public class cilindro extends circulo{
-    int altura;
+    private int altura;
 
     public int getAltura() {
         return altura;
@@ -30,7 +30,6 @@ public class cilindro extends circulo{
     }
 
     public cilindro() {
+        
     }
-    
-    
 }
