@@ -5,6 +5,10 @@
  */
 package dibujos;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SISTEMAS
@@ -30,6 +34,13 @@ public class cilindro extends circulo{
     }
 
     public cilindro() {
-        
+        super();
+        this.altura=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la altura del cilindro"));
+    }
+    @Override
+    public void paint(Graphics g){
+        g.setColor(Color.black);
+        g.drawOval(this.x, this.y, this.radio, this.radio);
+        g.drawOval(this.x, this.y*6, this.radio, this.radio);
     }
 }

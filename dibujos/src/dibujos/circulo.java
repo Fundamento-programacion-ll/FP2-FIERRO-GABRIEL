@@ -7,26 +7,33 @@ package dibujos;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author SISTEMAS CORP
  */
 public class circulo extends punto{
-    
-    private int radio;
+    static final double PI=3.1416;
+    int radio;
 
     public circulo() {
-        
+        super();
+        this.radio=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese los datos")); 
     }
 
-    public circulo(int radio, int x, int y) {
-        super(x, y);
-        this.radio = radio;
+    public double area(){
+        return PI * getRadio() * getRadio();
     }
     
-    public void dibujo(Graphics g){
-        g.setColor(Color.yellow);
+    
+    public circulo(int radio, int x, int y) {
+        super(x, y);
+    }
+    
+    public void paint(Graphics g){
+        g.setColor(Color.black);
         g.drawOval(super.getX(), super.getY(), this.radio, this.radio);
         
     }
@@ -38,5 +45,8 @@ public class circulo extends punto{
     public void setRadio(int radio) {
         this.radio = radio;
     }
-    
+    @Override
+    public String toString(){
+        return "circulo:" + super.toString() + " radio="+this.radio+"area: "+area();
+    }
 }

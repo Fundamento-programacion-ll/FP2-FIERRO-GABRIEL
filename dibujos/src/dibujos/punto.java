@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  * @author SISTEMAS CORP
  */
 public class punto extends figura{
-    private  int x;
-    private  int y;
+    int x;
+    int y;
 
     public punto() {
         super();
@@ -49,9 +49,9 @@ public class punto extends figura{
     }
     
     @Override
-    public void dibujo(Graphics g) {    
+    public void paint(Graphics g) {    
         g.setColor(Color.BLACK);
-        g.fillOval(this.x, this.y, 23, 23);
+        g.fillOval(this.x, this.y, 30, 30);
     }
 
     @Override
