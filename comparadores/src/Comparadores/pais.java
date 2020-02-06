@@ -12,12 +12,13 @@ public class pais {
     }
 
     public void setListaProvincias(ArrayList<provincia> listaProvincias) {
-        this.listaProvincias = listaProvincias;
-        int opcion;
+        int opcion ;
         provincia pro;
-        do{
-            
-        }while (opcion==JOptionPane.)
+        do {            
+            pro = new provincia();
+            agregarProvincia(pro);
+            opcion = JOptionPane.showConfirmDialog(null, "Mas Provincias", "Continuar",JOptionPane.YES_NO_CANCEL_OPTION);
+        } while (opcion==JOptionPane.YES_NO_CANCEL_OPTION);
     }
 
     public pais() {
