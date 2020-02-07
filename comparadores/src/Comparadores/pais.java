@@ -1,40 +1,64 @@
-
-package Comparadores;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package comparadores;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author SISTEMAS CORP
+ */
 public class pais {
-    private ArrayList <provincia> listaProvincias;
+    
+    private ArrayList<provincias> listaProvincias;
 
-    public ArrayList<provincia> getListaProvincias() {
+    public pais() {
+        this.listaProvincias = new ArrayList<>();
+    }
+
+    public pais(ArrayList<provincias> listaProvincias) {
+        this.listaProvincias = listaProvincias;
+    }
+
+    public ArrayList<provincias> getListaProvincias() {
         return listaProvincias;
     }
 
-    public void setListaProvincias(ArrayList<provincia> listaProvincias) {
+    public void setListaProvincias() {
         int opcion ;
-        provincia pro;
+        provincias provincia;
         do {            
-            pro = new provincia();
-            agregarProvincia(pro);
+            provincia = new provincias();
+            agregarProvincia(provincia);
             opcion = JOptionPane.showConfirmDialog(null, "Mas Provincias", "Continuar",JOptionPane.YES_NO_CANCEL_OPTION);
-        } while (opcion==JOptionPane.YES_NO_CANCEL_OPTION);
-    }
-
-    public pais() {
-        this.listaProvincias=new ArrayList<>();
-    }
-
-    public pais(ArrayList<provincia> listaProvincias) {
-        this.listaProvincias = listaProvincias;
+        } while (opcion==JOptionPane.YES_NO_CANCEL_OPTION);        
     }
     
-    public void agregarProvincia(provincia pro){
-        this.listaProvincias.add(pro);
+    
+    
+    public void agregarProvincia(provincias provincia){
+        this.listaProvincias.add(provincia);
     }
-    @Override
-    public String toString(){
-        return null;
+    
+    
+    public void ordenarPorNombreProvincia(){
+        // ordenar la lista de objetos por el nombre
+        Collections.sort(listaProvincias, new comparador());
+    }
+    
+    public void ordenarpornumero(){
+        Collections.sort(listaProvincias,new comparadorhab());
         
     }
+
+    @Override
+    public String toString() {
+        return "Lista provincias \n"+listaProvincias;
+    } 
 }
