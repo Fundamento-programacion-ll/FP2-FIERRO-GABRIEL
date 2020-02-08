@@ -18,10 +18,10 @@ public class administrativo extends persona{
         area=tokens.nextToken();
     }
     
-//    public administrativo(String area, int edad, String nombre, int cedula, String apellidos, String genero, float sueldo) {
-//        super(edad, nombre, cedula, apellidos, genero, sueldo);
-//        this.area = area;
-//    }
+    public administrativo(String area, int edad, String nombre, int cedula, String apellidos, String genero) {
+        super(edad, nombre, cedula, apellidos, genero);
+        this.area = area;
+    }
 
     public administrativo(String area) {
         this.area = area;
