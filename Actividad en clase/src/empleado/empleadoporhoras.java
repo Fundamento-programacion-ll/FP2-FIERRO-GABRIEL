@@ -31,14 +31,14 @@ public class empleadoporhoras extends EMPLEADO{
         this.sueldo = sueldo;
         this.horas = horas;
     }
-    
-    public void horasCond(){
-        if (horas>0 && horas<=168){
-            horas=horas;
-        }else{
-            horas=0;
-        }
-    }
+//    
+//    public void horasCond(){
+//        if (horas>0 && horas<=168){
+//            horas=horas;
+//        }else{
+//            horas=0;
+//        }
+//    }
 
     @Override
     public String toString(){

@@ -12,8 +12,8 @@ public class mvc {
         persona gabriel1=new persona("Gabriel1", "Fierro", "Carcelen", true, "1752509206", 19, "0996174424", 'm');
         persona gabriel2=new persona("Gabriel2", "Fierro", "Carcelen", true, "1752509206", 19, "0996174424", 'm');
         
-//        System.out.println(gabriel);
-//        inicio.menu();
+        System.out.println(gabriel);
+        inicio.menu();
         
         
         Scanner obtenerNumero = new Scanner(System.in);

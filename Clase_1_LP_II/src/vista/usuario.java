@@ -7,13 +7,8 @@ import javax.swing.JOptionPane;
 public class usuario {
     public void menu() {
         user metodos = new user();
-        int opcion;
-        opcion = Integer.parseInt(JOptionPane
-                .showInputDialog(null, "MENU \n"
-                        + "1. Agregar Persona \n"
-                        + "2. Listar Persona \n"
-                        + "3. Salir \n",
-                        this));
+        int opcion; 
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(null, "MENU \n"+ "1. Agregar Persona \n"+ "2. Listar Persona \n"+ "3. Salir \n",this));
         do {
             switch (opcion) {
                 case 1:
@@ -32,6 +27,5 @@ public class usuario {
                     break;
             }
         } while (opcion != 3);
-
     }
 }
