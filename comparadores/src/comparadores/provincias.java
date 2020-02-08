@@ -49,9 +49,4 @@ public class provincias {
     public String toString() {
         return "Nombre: "+ getNombreProvincia()+" habitantes: "+getNumeroHabitantes();
     }
-    
-    
-    
-    
-    
 }
