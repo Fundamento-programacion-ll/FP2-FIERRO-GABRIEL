@@ -34,7 +34,7 @@ public class persona {
     public persona() {
         String datos = JOptionPane.showInputDialog(null, "Ingrese los valores (edad,nombre,cedula,apellido,generos,sueldo) separados por ","");
         StringTokenizer tokens = new StringTokenizer(datos, ",");
-        this.edad=
+        
     }
 
     public int getEdad() {
