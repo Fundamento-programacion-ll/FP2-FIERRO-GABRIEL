@@ -39,9 +39,7 @@ public class pais {
             opcion = JOptionPane.showConfirmDialog(null, "Mas Provincias", "Continuar",JOptionPane.YES_NO_CANCEL_OPTION);
         } while (opcion==JOptionPane.YES_NO_CANCEL_OPTION);        
     }
-    
-    
-    
+     
     public void agregarProvincia(provincias provincia){
         this.listaProvincias.add(provincia);
     }

@@ -10,30 +10,17 @@ public class persona {
     int cedula;
     String apellidos;
     String genero;
-    float sueldo;
 
-    public persona(int edad, String nombre, int cedula, String apellidos, String genero, float sueldo) {
+    public persona(int edad, String nombre, int cedula, String apellidos, String genero) {
         this.edad = edad;
         this.nombre = nombre;
         this.cedula = cedula;
         this.apellidos = apellidos;
         this.genero = genero;
-        this.sueldo = sueldo;
-    }
 
-    
-    public float getSueldo() {
-        return sueldo;
     }
-
-    public void setSueldo(float sueldo) {
-        this.sueldo = sueldo;
-    }
-
 
     public persona() {
-        String datos = JOptionPane.showInputDialog(null, "Ingrese los valores (edad,nombre,cedula,apellido,generos,sueldo) separados por ","");
-        StringTokenizer tokens = new StringTokenizer(datos, ",");
         
     }
 
@@ -75,5 +62,9 @@ public class persona {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+    @Override
+    public String toString(){
+        return "Edad: \n"+edad+" Nombre: \n"+nombre+" Cedula: \n"+cedula+" Apellido :\n"+apellidos+" Genero: \n"+genero;
     }
 }
