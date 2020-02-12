@@ -57,8 +57,12 @@ var arreglojson=[
     {nombre:'gabriel2' , edad:'15'},
     {nombre:'gabriel3' , edad:'16'},
 ];
+let a = 0;
+arreglojson.forEach((element,indice)=>{
+    return a += element.edad;
+});
 
-console.log(arreglojson.nombre);
+console.log(a);
 
 
 
