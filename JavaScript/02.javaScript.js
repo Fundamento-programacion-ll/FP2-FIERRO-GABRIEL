@@ -44,7 +44,7 @@ console.log(noticia.length);
 console.log(noticia.substr(0,7).toLocaleUpperCase());
 console.log(noticia.slice(395,402).toLocaleUpperCase());
 console.log(noticia.slice(-9,-2).toLocaleUpperCase());
-console.log(noticia.split('*_*',noticia.length));
+console.log(noticia.split("*",noticia.length));
 
 
 
