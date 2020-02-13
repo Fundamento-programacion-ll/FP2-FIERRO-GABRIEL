@@ -17,7 +17,7 @@ var buscarUnUsuario = (arreglo, usuarioaBuscar)=>{
     });
     console.log(usuarioEncontrado);
 };
-buscarUnUsuario(arreglo, 'Gabriel');
+buscarUnUsuario(arreglo, '');
 
 console.log("---Agregar---");
 var agregar = arreglo.push({nombre: "Alejandro", apellido: "Mora", edad: 23});
@@ -30,5 +30,5 @@ var eliminar =(arreglo,usuarioaBuscar)=>{
     });
     console.log(usuarioEncontrado);
 };
-eliminar(arreglo, 'Marcela');
+eliminar(arreglo, 'Gabriel');
 
