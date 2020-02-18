@@ -25,7 +25,6 @@ public class conector {
     
     
     public conector(){
-        
         try {
             conexion = (Connection) DriverManager.getConnection(url,usuario,password);
             if (conexion != null) {
