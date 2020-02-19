@@ -347,9 +347,7 @@ public class DatosPersona extends javax.swing.JInternalFrame {
             cargaTablaBusqueda(Id);
         }
     }//GEN-LAST:event_bot_buscarActionPerformed
-
-
-    
+  
     private void bot_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bot_eliminarActionPerformed
          int filaSeleccionada = tbl_datos.getSelectedRow();
 

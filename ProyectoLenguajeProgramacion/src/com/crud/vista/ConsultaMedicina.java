@@ -83,6 +83,11 @@ private DefaultTableModel dtm;
 
         jLabel3.setText("Codigo:");
 
+        txt_codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codigoActionPerformed(evt);
+            }
+        });
         txt_codigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_codigoKeyPressed(evt);
@@ -181,6 +186,10 @@ private DefaultTableModel dtm;
             evt.consume();
         }        
     }//GEN-LAST:event_txt_codigoKeyTyped
+
+    private void txt_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigoActionPerformed
 
     public void mostrar (String valor){
          DefaultTableModel modelo=(DefaultTableModel) tbl_datos.getModel();

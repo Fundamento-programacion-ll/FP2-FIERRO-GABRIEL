@@ -475,7 +475,7 @@ public class DatosMedicina extends javax.swing.JInternalFrame {
                    Logger.getLogger(DatosMedicina.class.getName()).log(Level.SEVERE, null, ex);
                }
                
-               int filaSeleccionada = tbl_datos.getSelectedRow();   
+        int filaSeleccionada = tbl_datos.getSelectedRow();   
     }//GEN-LAST:event_bot_eliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -25,15 +25,15 @@ public class ASD {
         Stringconexion.getConnection();
         
         String select =
-"select * from producto where ID_PRODUCTO = ?";
+"SELECT * FROM baseproyecto.producto";
         
         try {
             ps = Stringconexion.getConnection().prepareStatement(select);
-            ps.setInt(1, 3);
             rs = ps.executeQuery(); // obtener resultados
             while (rs.next()) {                
                 // 1 id
                 // ver todo lo de id = 2
+                System.out.println(rs.getString(1));
                 System.out.println(rs.getString(2));
                 System.out.println(rs.getString(3));
                 System.out.println(rs.getFloat(4));

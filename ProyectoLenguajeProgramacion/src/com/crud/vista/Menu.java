@@ -202,7 +202,7 @@ public class Menu extends javax.swing.JFrame {
         showJInternalFrameCenterPosition(login);
     }//GEN-LAST:event_jIngreso_UsuarioActionPerformed
 
-     private void showJInternalFrameCenterPosition(JInternalFrame jInternalFrame) {
+    private void showJInternalFrameCenterPosition(JInternalFrame jInternalFrame) {
         Panel.add(jInternalFrame);
         Dimension componentDim = jInternalFrame.getSize();
         Dimension desktopDim = Panel.getSize();
