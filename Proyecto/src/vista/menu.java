@@ -88,6 +88,11 @@ public class menu extends javax.swing.JFrame {
         Cliente.setText("Cliente");
 
         jMenuItem5.setText("Comprar un Producto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         Cliente.add(jMenuItem5);
 
         jMenuItem6.setText("Quejas o Sugerencias");
@@ -149,6 +154,11 @@ public class menu extends javax.swing.JFrame {
         controlproducto control=new controlproducto();
         showJInternalFrameCenterPosition(control);
     }//GEN-LAST:event_jMenucontrolActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        compra com=new compra();
+        showJInternalFrameCenterPosition(com);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void showJInternalFrameCenterPosition(JInternalFrame jInternalFrame) {
         Panel.add(jInternalFrame);
