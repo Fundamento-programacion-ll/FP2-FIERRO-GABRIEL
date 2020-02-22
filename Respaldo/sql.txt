@@ -1,0 +1,219 @@
+--CREACION DE BDD
+create database regcivil
+go
+use regcivil
+go
+
+--CREACION DE TABLAS
+Create table datos(
+Cod char (3) not null,
+Nom varchar (30) null,
+apell varchar (30) null,
+genero varchar (30) null,
+prov varchar (30) null,
+)
+go
+
+--consulta
+select *
+from datos;
+go
+
+select Cod, prov
+from datos;	
+go
+
+--Insertar datos
+insert into datos (Cod,Nom,apell,genero,prov)
+values (1,'Edwin','Cocha','Masculino','Pichincha')
+
+insert into datos (Cod,Nom,apell,genero,prov)
+values (2,'Glenda','Valencia','Femenino','Pichincha')
+go
+
+select *from datos;
+
+--T-SQL
+--VARIABLES GLOBALES 
+
+@@VERSION
+
+SELECT @@VERSION AS Informacion_Version
+print @@VERSION
+
+--PROPIEDADES DEL SERVIDOR
+
+SERVERPROPERTY
+
+select SERVERPOPERTY ('ProductLevel')
+select @@VERSION
+select SERVERPROPERY('ProductVersion')
+select SERVERPROPERY('Edition')
+
+
+select SERVERPROPERY ('BuildClrVersion')
+
+--CONECCIONES
+
+print @@CONNECTIONS
+
+print @@MAX_CONNECTIONS
+
+--USO DEL CPU
+print 'INFORME DE RENDIMIENTO'
+print '----------------------'
+print 'Uso del cpu:'
+print @@CPU_BUSY
+
+--ERRORES
+print @@ERROR
+--CONTADOR DE ENTRADAS Y SALIDAS
+print @@IDLE
+--ENTRADAS Y SALIDASG
+print @@IO_BUSY
+--LENGUAJE
+print @@LANGUAGE
+print @@LANGID
+--PAQUETES 
+print @@PACK_RECEIVED
+print @@PACK_SENT 
+print @@PACKET_ERRORS
+--CONTADOR DE FILAS
+print @@ROWCOUNT
+--NOMBRE DEL SERVIDOR
+print @@SERVERNAME
+--TAMAÑO DEL TEXTO
+print @@TEXTSIZE
+--TIMESTAMP
+print @@TIMETICKS
+--TOTAL DE LECTURAS
+print @@TOTAL_READ
+--TOTAL DE ESCRITURAS
+print @@TOTAL_WRITE
+
+--
+print 'INFORME DE RENDIMIENTO'
+print '----------------------'
+print 'Uso del cpu: '+CONVERT(VARCHAR,@@CPU_BUSY)
+print 'Paquetes enviados: '+CONVERT(VARCHAR,@@PACK_SENT)
+print 'Paquetes recividos: '+CONVERT(VARCHAR,@@PACK_RECEIVED)
+print 'Nombre del servidor: '+@@SERVERNAME
+print 'Errores en la base de datos: '+CONVERT(VARCHAR,@@ERROR)
+print 'Errores en los paquetes: '+CONVERT(VARCHAR,@@PACKET_ERRORS)
+print 'Total de errores: '++CONVERT(VARCHAR,@@TOTAL_ERRORS)
+print 'El lenguaje configurado es: '+@@LANGUAGE
+
+
+
+--Ejercicio 1 
+--Escribir un scrip que declare una variable entera
+--llamada @mivariable
+
+Declare @mivariable int = 37;
+print @mivariable;
+set @mivariable = @mivariable*2
+print @mivariable; 
+
+--Ejercicio 2
+--Escribir un scrip que declare una variable tipo varchar(30)
+--llamada @text con el mensaje contenido de @mivariable
+
+Declare @text varchar(30)= 'Contenido de @mivariable';
+print @text;
+
+--Ejercicio3
+--Escribir un scrip que declara las variable @nombre tipo varchar(30) y 
+--edad tipo entero e imprimir el contenido de ambas variable con el formato
+
+--Hola, mi nombre es______,
+--tengo ___ años
+
+declare @nombre varchar(30);
+declare @edad int;
+set @nombre='Gabriel Fierro'
+set @edad=18
+print 'Hola, mi nombre es '+@nombre
+print 'y tengo '+Convert(varchar,@edad)+' años'
+
+
+--BicicletasxD
+
+execute BuscadorBicicleta '1 year'
+
+
+--
+Declare @mivariable BigInt =50;
+Print @mivariable;
+SET @MIVARIABLE = POWER (@mivariable,2)
+Print @mivariable
+set @mivariable = POWER (@mivariable,2)
+print @mivariable;
+select power (7,2)
+select (5457-62)
+
+-Informe 3
+
+select Name,ProductNumber,Color from SalesLT.Product
+where color='White'
+
+select Name,ProductNumber,Color from SalesLT.Product
+where color<>'Black'
+
+select name as Nombres,
+ProductNumber as Numero, Color
+from SalesLT.Product
+
+
+--Ejercicio
+--Mostrar el identificador , fecha_orden y precio_total de la orden de compra, valores mayores a 1000$
+select SalesOrderID as IDPedidos,
+OrderDate as Fecha_Orden,
+TotalDue as Precio_Total 
+from SalesLT.SalesOrderHeader
+where TotalDue > 1000
+
+
+--Declarar dos variables enteras para capturar y mostrar los valores maximos y minimos de la
+SELECT * FROM SalesLT.SalesOrderHeader
+
+select MAX (SalesOrderID) as ValorMAX,
+MIN (SalesOrderID) as ValorMIN
+from SalesLT.SalesOrderHeader
+
+declare @valmax Int;
+declare @valmin Int;
+Select @valmax=max(SalesOrderID),
+@valmin=min(SalesOrderID)
+from SalesLT.SalesOrderHeader;
+print 'Resultados'
+print 'Valor Maximo: '+convert (varchar,@valmax);
+print 'Valor Minimo: '+convert (varchar,@valmin);
+
+--Mostrar el codigo (ID) cantidad de orden de comra y signar un texto que identifique el rango numerico utilizando
+--las etiquetas 'Menor que 10',
+
+Select SalesorderID as Codigo,Orderqty as Cantidad,
+case
+when Orderqty between 0 and 9 then 'menor de 10'
+when Orderqty between 10 and 19 then 'entre 10 y 19'
+when Orderqty between 20 and 29 then 'entre 20 y 29'
+when Orderqty between 30 and 39 then 'entre 30 y 39'
+else '40 y mas' end as rango
+from SalesOrderLT.SalesOrderDetail;
+
+
+--PROCEDIMIENTOS ALMACENADOS--
+CREATE PROCEDURE incertardatos(
+ @Cod char(3),
+ @Nom varchar(30),
+ @apell varchar(30),
+ @genero varchar(30),
+ @prov varchar(30)
+)
+AS
+
+INSERT INTO datos(Cod,Nom,apell,genero,prov)
+VALUES (@Cod,@Nom,@apell,@genero,@prov)
+
+--INCERTAR DATOS CON EL PA
+EXECUTE incertardatos 2,'Gabriel','Fierro','M','Pichincha'

@@ -1,0 +1,18 @@
+----------NOMBRE----------
+Router>Enable
+Router#Configure terminal
+Router(config)#Hostname (cuaquiera)
+cualquiera(config)#Exit x2
+
+----------CONTRASEÑA----------
+Router>Enable
+Router#Configure terminal
+Router(config)#Enable secret 12345
+Router(config)#Exit x 2
+
+----------Encender Router----------
+Router>Enable
+Router#Configure terminal
+Router(config)#interface Gigabitehternet 0/0 
+Router(config)#ip address ip y mascara
+Router(config)#No shutdow

@@ -1,0 +1,10 @@
+ System.out.println("Escogio la opcion 3");
+                    System.out.println("Ingrese el numero");
+                    num=sc.nextInt();
+                    
+                    for(i=0 ;i<=num;i++){
+                            respuesta=(i)+=2;
+                        if(respuesta<=num){
+                            System.out.println("El numero incrementado en 3 es: "+respuesta);
+                        }
+                    }

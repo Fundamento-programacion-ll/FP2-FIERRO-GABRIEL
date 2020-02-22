@@ -1,0 +1,4 @@
+ public void nombres (String [] nombres, int i ){
+        System.out.println(" NOMBRE"+(i+1)+"_es:"+nombres[i]);
+    }
+}

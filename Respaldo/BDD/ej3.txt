@@ -1,0 +1,31 @@
+ public static void main(String[] args) {
+        
+        int i;
+        int n;
+        String letra;
+              
+        Scanner sc=new Scanner (System.in);
+        ej_3 ej=new ej_3();
+        
+        do{
+            
+        System.out.println("ingresar dimensione:");
+        n=sc.nextInt();
+        
+        String nombres[]=new String[n];  
+        
+        for(i=0;i<n;i++){
+        System.out.println("Ingresar el nombre"+(i+1));
+        nombres[i]=sc.next();
+    }
+        
+        for (i=0;i<n;i++){
+            ej.nombres(nombres,i);
+            
+        }
+        
+            sc.nextLine();
+            System.out.println("---DESEA HACER OTRO METODO----");
+            System.out.println("---SI/NO---");
+            letra=sc.nextLine().toLowerCase();
+    }while (!letra.equalsIgnoreCase("no"));
