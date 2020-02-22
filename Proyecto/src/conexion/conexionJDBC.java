@@ -1,7 +1,7 @@
 
 package conexion;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -15,7 +15,7 @@ public class conexionJDBC {
 
     private static final String CLASS_DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    public java.sql.Connection getConnection() {
+    public Connection getConnection() {
         try {
             Class.forName(CLASS_DRIVER).newInstance();
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
